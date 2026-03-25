@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="/static/style.css">
+
+<h1>Admin Panel - Guverner</h1>
+
+<h2>Treasury: {{ bank.treasury }} MJV</h2>
+
+<h3>Mint</h3>
+<form method="POST" action="/admin/mint">
+<input name="amount">
+<button>Create</button>
+</form>
+
+<h3>Burn</h3>
+<form method="POST" action="/admin/burn">
+<input name="amount">
+<button>Delete</button>
+</form>
+
+<h3>Send Money</h3>
+<form method="POST" action="/admin/send">
+<input name="user">
+<input name="amount">
+<button>Send</button>
+</form>
+
+<h2>Users</h2>
+{% for user in users %}
+<p>{{ user.username }} | {{ user.balance }} MJV | Loan: {{ user.loan }}</p>
+{% endfor %}
