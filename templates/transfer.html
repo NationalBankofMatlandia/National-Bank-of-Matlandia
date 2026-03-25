@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transfer - National Bank of Matlandia</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<h1>Transfer Money</h1>
+<form method="POST">
+    Recipient Username: <input type="text" name="recipient" required><br>
+    Amount ({{ currency }}): <input type="number" name="amount" step="0.01" required><br>
+    <button type="submit">Send</button>
+</form>
+<a href="/dashboard">Back to Dashboard</a>
+</body>
+</html>
