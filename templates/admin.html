@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Panel - National Bank of Matlandia</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<h2>Admin Panel</h2>
+<p>Total Treasury: {{ treasury }} MJV</p>
+
+<h3>Mint / Burn / Send MJV</h3>
+<form method="POST">
+<select name="action">
+<option value="mint">Mint MJV</option>
+<option value="burn">Burn MJV</option>
+<option value="send">Send to User</option>
+</select><br>
+<label>Amount:</label><input type="number" step="0.01" name="amount"><br>
+<label>Target User (for send):</label><input type="text" name="target_user"><br>
+<button type="submit">Execute</button>
+</form>
+
+<h3>All Users</h3>
+<table border="1">
+<tr><th>Username</th><th>Email</th><th>Passport/Citizenship</th><th>Balance</th></tr>
+{% for u in users %}
+<tr>
+<td>{{ u.username }}</td>
+<td>{{ u.email }}</td>
+<td>{{ u.passport_citizenship_number }}</td>
+<td>{{ u.balance }}</td>
+</tr>
+{% endfor %}
+</table>
+
+<a href="/">Home</a> | <a href="/logout">Logout</a>
+</body>
+</html>
