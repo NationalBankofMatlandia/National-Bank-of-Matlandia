@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - National Bank of Matlandia</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Narodna Banka Matlandije">
+            <h1>Dashboard</h1>
+        </header>
+        <div class="dashboard-info">
+            <div>
+                <h3>Username</h3>
+                <p>{{ user.username }}</p>
+            </div>
+            <div>
+                <h3>Balance (MJV)</h3>
+                <p>{{ user.balance }}</p>
+            </div>
+            <div>
+                <h3>Debt (MJV)</h3>
+                <p>{{ user.debt }}</p>
+            </div>
+            <div>
+                <h3>Exchange Rate</h3>
+                <p>1 MJV = {{ mjv_to_rsd }} RSD ≈ {{ mjv_to_eur }} EUR ≈ {{ mjv_to_usd }} USD</p>
+            </div>
+        </div>
+
+        <p><a href="/transfer">Transfer Money</a> | <a href="/loan">Take Loan</a> | <a href="/repay">Repay Loan</a> | <a href="/delete_account">Delete Account</a> | <a href="/logout">Logout</a></p>
+    </div>
+</body>
+</html>
