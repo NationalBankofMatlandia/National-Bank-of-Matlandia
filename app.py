@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', 'BarjakMatlandije')
 
 # Database (persistent on Render)
-DB_PATH = os.environ.get("DB_PATH", "/data/database.db")
+DB_PATH = os.environ.get("DB_PATH", "/opt/render/project/data/database.db")
 app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{DB_PATH}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
