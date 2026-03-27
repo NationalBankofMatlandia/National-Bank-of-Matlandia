@@ -1,15 +1,16 @@
-# Matlandia Digital Currency (MJV) - Backend for Render
-from flask import Flask, render_template, request, redirect, session
+import os
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
-import os
 
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', 'BarjakMatlandije')
 
-# --- DATABASE CONFIGURATION ---
-DB_PATH = os.environ.get("DB_PATH", "/opt/render/project/data/database.db")
-app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{DB_PATH}"
+database_url = os.environ.get('DATABASE_URL')
+if not database_url:
+    raise ValueError("DATABASE_URL environment variable not set!")
+
+app.config['SQLALCHEMY_DATABASE_URI'] = database_url
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
