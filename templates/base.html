@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>National Bank of Matlandia</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="/dashboard">Dashboard</a> |
+        <a href="/loan">Loan</a> |
+        <a href="/repay">Repay</a> |
+        <a href="/transfer">Transfer</a> |
+        <a href="/logout">Logout</a>
+    </nav>
+    <hr>
+    {% block content %}{% endblock %}
+</body>
+</html>
