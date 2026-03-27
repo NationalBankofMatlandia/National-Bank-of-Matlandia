@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Dashboard</h2>
+<p>Welcome, {{ user.username }}!</p>
+<p>Email: {{ user.email }}</p>
+<p>Balance: {{ "%.2f"|format(user.balance) }} MJV</p>
+<p>Debt: {{ "%.2f"|format(user.debt) }} MJV</p>
+<h3>Exchange Rates</h3>
+<ul>
+    <li>1 MJV = {{ mjv_to_rsd }} RSD</li>
+    <li>1 MJV ≈ {{ mjv_to_eur }} EUR</li>
+    <li>1 MJV ≈ {{ mjv_to_usd }} USD</li>
+</ul>
+{% endblock %}
