@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>National Bank of Matlandia</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="NBM Logo">
+        <nav>
+            {% if session.get('user') %}
+                <a href="{{ url_for('dashboard') }}">Dashboard</a>
+                <a href="{{ url_for('transfer') }}">Transfer</a>
+                <a href="{{ url_for('loan') }}">Loan</a>
+                <a href="{{ url_for('repay') }}">Repay</a>
+                <a href="{{ url_for('logout') }}">Logout</a>
+                {% if session.get('user') == 'Guverner' %}
+                    <a href="{{ url_for('admin') }}">Admin</a>
+                {% endif %}
+            {% else %}
+                <a href="{{ url_for('login') }}">Login</a>
+                <a href="{{ url_for('register') }}">Register</a>
+            {% endif %}
+        </nav>
+    </header>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
