@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Dashboard - {{ user.username }}</h2>
+<p>Balance: {{ user.balance }} MJV</p>
+<p>Debt: {{ user.debt }} MJV</p>
+<p>Exchange rate: 1 MJV = {{ mjv_to_rsd }} RSD ≈ {{ mjv_to_eur }} EUR ≈ {{ mjv_to_usd }} USD</p>
+
+<p><a href="{{ url_for('transfer') }}">Transfer</a> | 
+<a href="{{ url_for('loan') }}">Loan</a> | 
+<a href="{{ url_for('repay') }}">Repay</a> | 
+<form method="post" action="{{ url_for('delete_account') }}" style="display:inline;">
+    <button type="submit">Delete Account</button>
+</form> | 
+<a href="{{ url_for('logout') }}">Logout</a></p>
+{% endblock %}
