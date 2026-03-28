@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Welcome, {{ user.username }}!</h2>
+<p>Balance: {{ user.balance }} MJV | Debt: {{ user.debt }} MJV</p>
+<p>Bank Treasury: {{ bank.treasury }} MJV</p>
+
+<div class="dashboard-actions">
+    <form method="POST" action="{{ url_for('transfer') }}">
+        <h3>Transfer MJV</h3>
+        <input type="text" name="to" placeholder="Recipient username" required>
+        <input type="number" name="amount" placeholder="Amount" step="0.01" required>
+        <button type="submit">Send</button>
+    </form>
+
+    <form method="POST" action="{{ url_for('loan') }}">
+        <h3>Take Loan</h3>
+        <input type="number" name="amount" placeholder="Amount" step="0.01" required>
+        <button type="submit">Loan</button>
+    </form>
+
+    <form method="POST" action="{{ url_for('repay') }}">
+        <h3>Repay Debt</h3>
+        <input type="number" name="amount" placeholder="Amount" step="0.01" required>
+        <button type="submit">Repay</button>
+    </form>
+
+    <form method="POST" action="{{ url_for('delete_account') }}">
+        <h3>Delete Account</h3>
+        <label>
+            <input type="checkbox" name="confirm_delete" required> I understand this cannot be undone
+        </label>
+        <button type="submit">Delete Account</button>
+    </form>
+</div>
+{% endblock %}
