@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Admin Panel (Guverner)</h2>
+
+<p><b>Bank Treasury:</b> {{ bank.treasury }} MJV</p>
+
+<h3>Add MJV</h3>
+<form method="POST" action="/admin/add_mjv">
+    <input name="amount" type="number" required>
+    <button>Add</button>
+</form>
+
+<h3>Remove MJV</h3>
+<form method="POST" action="/admin/remove_mjv">
+    <input name="amount" type="number" required>
+    <button>Remove</button>
+</form>
+
+<h3>Send MJV to User</h3>
+<form method="POST" action="/admin/transfer_to_user">
+    <input name="recipient" placeholder="Username" required>
+    <input name="amount" type="number" required>
+    <button>Send</button>
+</form>
+
+<h3>Users</h3>
+<table>
+<tr>
+    <th>Username</th>
+    <th>Email</th>
+    <th>Passport</th>
+    <th>Balance</th>
+    <th>Debt</th>
+</tr>
+
+{% for u in users %}
+<tr>
+    <td>{{ u.username }}</td>
+    <td>{{ u.email }}</td>
+    <td>{{ u.passport }}</td>
+    <td>{{ u.balance }}</td>
+    <td>{{ u.debt }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+{% endblock %}

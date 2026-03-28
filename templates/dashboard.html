@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Welcome {{ user.username }}</h2>
+
+<p><b>Balance:</b> {{ user.balance }} MJV</p>
+<p><b>Debt:</b> {{ user.debt }} MJV</p>
+
+<h3>Exchange Rate</h3>
+<p>1 MJV = 10 RSD</p>
+<p>≈ 0.0095 EUR</p>
+<p>≈ 0.0098 USD</p>
+
+<h3>Transfer</h3>
+<form method="POST" action="/transfer">
+    <input name="recipient" placeholder="Recipient username" required>
+    <input name="amount" type="number" step="0.01" placeholder="Amount" required>
+    <button>Send</button>
+</form>
+
+<h3>Loan</h3>
+<form method="POST" action="/loan">
+    <input name="amount" type="number" step="0.01" required>
+    <button>Take Loan</button>
+</form>
+
+<h3>Repay</h3>
+<form method="POST" action="/repay">
+    <input name="amount" type="number" step="0.01" required>
+    <button>Repay</button>
+</form>
+
+<h3>Delete Account</h3>
+<form method="POST" action="/delete_account">
+    <label>
+        <input type="checkbox" name="confirm" value="yes" required>
+        I confirm account deletion
+    </label>
+    <button>Delete</button>
+</form>
+
+{% endblock %}
