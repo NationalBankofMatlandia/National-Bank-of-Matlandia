@@ -6,10 +6,13 @@ import os
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', 'BarjakMatlandije')
 
-# DATABASE_URL za Render
-DATABASE_URL = os.environ.get('DATABASE_URL', 'sqlite:///database.db')
+DATABASE_URL = os.environ.get('DATABASE_URL')
+
+# FIX za Render
+if DATABASE_URL and DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+
 app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
