@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Matlandia Bank</title>
+    <title>National Bank of Matlandia</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
 <header>
     <img src="{{ url_for('static', filename='logo.png') }}" class="logo">
-    <h1>Matlandia Bank (MJV)</h1>
+    <h1>National Bank of Matlandia</h1>
     <nav>
         {% if session.get('user') %}
             <a href="/dashboard">Dashboard</a>
