@@ -8,12 +8,10 @@ app.secret_key = os.environ.get('SECRET_KEY', 'BarjakMatlandije')
 
 DATABASE_URL = os.environ.get('DATABASE_URL')
 
-# ako postoji PostgreSQL
-if DATABASE_URL:
-    if DATABASE_URL.startswith("postgres://"):
-        DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
-else:
-    # fallback da ne crashuje
+if DATABASE_URL and DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+
+if not DATABASE_URL:
     DATABASE_URL = "sqlite:///database.db"
 
 app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
